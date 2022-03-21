@@ -9,7 +9,8 @@ public class Main {
        sv.age = 20;
        x= 10;
        SinhVien maivannam = new SinhVien();
-
+       Classroom c = new Classroom();
+       sv.myClass = c;
        sv.study();
        maivannam.study();
 
