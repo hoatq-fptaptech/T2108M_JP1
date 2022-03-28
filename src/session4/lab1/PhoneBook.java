@@ -1,6 +1,8 @@
 package session4.lab1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PhoneBook extends Phone{
     public ArrayList<PhoneNumber> PhoneList = new ArrayList<>();
@@ -54,5 +56,25 @@ public class PhoneBook extends Phone{
     @Override
     public void sort() {
        // bubble sort
+//        for(int i=0;i<PhoneList.size()-1;i++){
+//            for(int j=0;j<PhoneList.size()-i-1;j++){
+//                if(PhoneList.get(j).name.compareTo(PhoneList.get(j+1).name) > 0){
+//                    PhoneNumber temp = PhoneList.get(j);
+//                    PhoneList.set(j,PhoneList.get(j+1));
+//                    PhoneList.set(j+1,temp);
+//                }
+//            }
+//        }
+
+        Collections.sort(PhoneList, new Comparator<PhoneNumber>() {
+            @Override
+            public int compare(PhoneNumber o1, PhoneNumber o2) {
+                return o1.name.compareTo(o2.name);
+            }
+        });
+
+        for(PhoneNumber p:PhoneList){
+            System.out.println(p.name);
+        }
     }
 }
