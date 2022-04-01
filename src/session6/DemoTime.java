@@ -3,7 +3,6 @@ package session6;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.util.TimeZone;
 
 public class DemoTime {
     public static void main(String args[]){
@@ -40,6 +39,5 @@ public class DemoTime {
         System.out.println(lt3);
 
         LocalDateTime lt4 = lt3.minusHours(1);
-
     }
 }
