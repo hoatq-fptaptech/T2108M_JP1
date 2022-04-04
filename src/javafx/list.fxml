@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fx:controller="javafx.ListController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
+         <children>
+            <Text layoutX="335.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Person List" wrappingWidth="123.9287109375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="listView" layoutX="53.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="673.21630859375">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button layoutX="624.0" layoutY="15.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="135.0" text="Add person">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
