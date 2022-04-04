@@ -19,17 +19,26 @@ public class DemoController {
         try{
             Person p = new Person(fullName.getText(),
                     email.getText(),Integer.parseInt(age.getText()));
-            result.setText(result.getText()+p.toString());
+            Main.personList.add(p);
 
-            fullName.setText("");
-            email.setText("");
-            age.setText("");
-
+            renderList();
             errMsg.setVisible(false);
         }catch (Exception e){
             errMsg.setText(e.getMessage());
             errMsg.setVisible(true);
         }
 
+    }
+
+    private void renderList(){
+        String txt = "Infomation\n";
+        for(Person p : Main.personList){
+            txt+= p.toString();
+        }
+        result.setText(txt);
+
+        fullName.setText("");
+        email.setText("");
+        age.setText("");
     }
 }

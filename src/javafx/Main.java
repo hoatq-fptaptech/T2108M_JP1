@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.util.ArrayList;
 
+public class Main extends Application {
+    public static ArrayList<Person> personList = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("form.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("list.fxml"));
         primaryStage.setTitle("T2108M");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
@@ -18,6 +20,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        personList.add(new Person("quang hoa","quanghoa@gmail.com",18));
+        personList.add(new Person("nguyen van an","annv@gmail.com",16));
         launch(args);
     }
 }
