@@ -1,5 +1,8 @@
 package javafx;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -21,7 +24,10 @@ public class DemoController {
                     email.getText(),Integer.parseInt(age.getText()));
             Main.personList.add(p);
 
-            renderList();
+            //renderList();
+            Parent root = FXMLLoader.load(getClass().getResource("list.fxml"));
+            Main.rootStage.setScene(new Scene(root,800,600));
+
             errMsg.setVisible(false);
         }catch (Exception e){
             errMsg.setText(e.getMessage());
