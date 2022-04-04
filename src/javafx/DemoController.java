@@ -13,6 +13,12 @@ public class DemoController {
     public TextField email;
     public TextField age;
 
+    public Person person;
+
+    public void setData(Person person){
+        this.person = person;
+    }
+
     public void submit(){
 //        String s = "\n------------------";
 //        s+= "\n"+fullName.getText();

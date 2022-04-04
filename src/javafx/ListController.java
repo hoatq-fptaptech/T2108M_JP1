@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,12 +20,14 @@ public class ListController implements Initializable {
     public TableColumn<Person,String> cName;
     public TableColumn<Person,String> cEmail;
     public TableColumn<Person,Integer> cAge;
+    public TableColumn<Person, Button> cEdit;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cName.setCellValueFactory(new PropertyValueFactory<Person,String>("fullname"));
         cEmail.setCellValueFactory(new PropertyValueFactory<Person,String>("email"));
         cAge.setCellValueFactory(new PropertyValueFactory<Person,Integer>("age"));
+        cEdit.setCellValueFactory(new PropertyValueFactory<Person,Button>("edit"));
         tbView.setItems(Main.personList);
     }
 

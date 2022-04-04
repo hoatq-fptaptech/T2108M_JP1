@@ -21,9 +21,10 @@
             </Button>
             <TableView fx:id="tbView" layoutX="17.0" layoutY="86.0" prefHeight="514.0" prefWidth="747.0">
               <columns>
-                <TableColumn fx:id="cName" prefWidth="304.0" text="Name" />
-                <TableColumn fx:id="cEmail" prefWidth="336.0" text="Email" />
-                  <TableColumn fx:id="cAge" prefWidth="96.0" text="Age" />
+                <TableColumn fx:id="cName" prefWidth="216.0" text="Name" />
+                <TableColumn fx:id="cEmail" prefWidth="320.0" text="Email" />
+                  <TableColumn fx:id="cAge" prefWidth="114.0" text="Age" />
+                  <TableColumn fx:id="cEdit" prefWidth="114.0" text="Edit" />
               </columns>
             </TableView>
          </children></AnchorPane>
