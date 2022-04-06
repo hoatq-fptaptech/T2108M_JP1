@@ -27,6 +27,8 @@
                   <TableColumn fx:id="cEdit" prefWidth="114.0" text="Edit" />
               </columns>
             </TableView>
+            <TextField fx:id="txtSearch" layoutX="17.0" layoutY="16.0" prefHeight="27.0" prefWidth="182.0" promptText="Search by name.." />
+            <Button onAction="#search" layoutX="178.0" layoutY="16.0" mnemonicParsing="false" text="Search" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
