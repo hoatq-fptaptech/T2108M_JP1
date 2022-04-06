@@ -22,9 +22,11 @@ public final class Person {
         this.edit = new Button("Edit");
         this.edit.setOnAction(event->{
             try{
-//                FXLoader loader = new FXLoader().getClass().getResource("form.fxml");
-//                Parent root = loader.load();
-                Parent root = FXMLLoader.load(getClass().getResource("form.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("form.fxml"));
+                Parent root = loader.load();
+                DemoController d = loader.getController();
+                d.setData(this);
+//                Parent root = FXMLLoader.load(getClass().getResource("form.fxml"));
                 Main.rootStage.setScene(new Scene(root,800,600));
             }catch (Exception e){
 

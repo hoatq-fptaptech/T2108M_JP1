@@ -17,6 +17,10 @@ public class DemoController {
 
     public void setData(Person person){
         this.person = person;
+
+        fullName.setText(person.getFullname());
+        email.setText(person.getEmail());
+        age.setText(person.getAge().toString());
     }
 
     public void submit(){
@@ -28,7 +32,12 @@ public class DemoController {
         try{
             Person p = new Person(fullName.getText(),
                     email.getText(),Integer.parseInt(age.getText()));
-            Main.personList.add(p);
+            if(this.person == null){
+                Main.personList.add(p);
+            }else{
+                int i = Main.personList.indexOf(this.person);
+                Main.personList.set(i,p);
+            }
 
             //renderList();
             Parent root = FXMLLoader.load(getClass().getResource("list.fxml"));
