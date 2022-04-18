@@ -19,7 +19,7 @@
                   <TableColumn fx:id="sAction" prefWidth="122.0" text="Action" />
               </columns>
             </TableView>
-            <Button layoutX="644.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="125.0" text="Add a student" />
+            <Button onAction="#addStudent" layoutX="644.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="125.0" text="Add a student" />
             <Button onAction="#backHome" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="93.0" text="&lt;&lt; Back" />
          </children></AnchorPane>
   </content>

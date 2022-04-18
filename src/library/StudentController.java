@@ -72,4 +72,9 @@ public class StudentController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         Main.rootStage.setScene(new Scene(root,800,600));
     }
+
+    public void addStudent(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("studentForm.fxml"));
+        Main.rootStage.setScene(new Scene(root,800,600));
+    }
 }
