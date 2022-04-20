@@ -25,11 +25,6 @@ public class StudentController implements Initializable {
     public TableColumn<Student,String> sPhone;
     public TableColumn<Student, Button> sAction;
 
-    // tao cac string ket noi
-    public final static String connectionString = "jdbc:mysql://localhost:3306/T2108M";
-    public final static String user = "root";
-    public final static String password = "root";
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
@@ -41,15 +36,12 @@ public class StudentController implements Initializable {
 
         // get data from mysql
         try {
-            // goi driver
-            Class.forName("com.mysql.jdbc.Driver");
-            // tao connect
-            Connection conn = DriverManager.getConnection(connectionString,user,password);
-            // khai bao Statement de truy van sql
-            Statement stt = conn.createStatement();
+
             // truy van sql
             String txt_sql = "select * from Students";
-            ResultSet rs = stt.executeQuery(txt_sql);
+            Connector conn = new Connector();
+            PreparedStatement stt = conn.getStatement(txt_sql);
+            ResultSet rs = stt.executeQuery();
 
             ObservableList<Student> list = FXCollections.observableArrayList();
             while (rs.next()){

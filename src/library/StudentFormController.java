@@ -10,9 +10,6 @@ import javafx.scene.control.TextField;
 import java.sql.*;
 
 public class StudentFormController {
-    public final static String connectionString = "jdbc:mysql://localhost:3306/T2108M";
-    public final static String user = "root";
-    public final static String password = "root";
 
     public TextField sName;
     public TextField sEmail;
@@ -47,10 +44,6 @@ public class StudentFormController {
 
 
         try {
-            // goi driver
-            Class.forName("com.mysql.jdbc.Driver");
-            // tao connect
-            Connection conn = DriverManager.getConnection(connectionString,user,password);
 
             String sql_txt = "";
             if(this.editData == null){
@@ -58,7 +51,8 @@ public class StudentFormController {
             }else{
                 sql_txt = "update Students set studentName= ?,dateOfBirth = ?,address=?,email=?,phoneNumber= ? where id="+this.editData.getId();
             }
-            PreparedStatement stt = conn.prepareStatement(sql_txt);
+            Connector conn = new Connector();
+            PreparedStatement stt = conn.getStatement(sql_txt);
             stt.setString(1,name);
             stt.setString(2,birthday);
             stt.setString(3,address);
