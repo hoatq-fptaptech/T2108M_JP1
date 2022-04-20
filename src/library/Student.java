@@ -1,5 +1,10 @@
 package library;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+
 import java.sql.Date;
 
 public class Student {
@@ -9,6 +14,7 @@ public class Student {
     public String address;
     public String email;
     public String phoneNumber;
+    public Button editBtn;
 
     public Student(Integer id, String studentName, Date dateOfBirth, String address, String email, String phoneNumber) {
         this.id = id;
@@ -17,6 +23,26 @@ public class Student {
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.editBtn = new Button("Edit");
+        this.editBtn.setOnAction((event)->{
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("studentForm.fxml"));
+                Parent root = loader.load();
+                StudentFormController d = loader.getController();
+                d.setEditData(this);
+                Main.rootStage.setScene(new Scene(root,800,600));
+            }catch (Exception e){
+
+            }
+        });
+    }
+
+    public Button getEditBtn() {
+        return editBtn;
+    }
+
+    public void setEditBtn(Button editBtn) {
+        this.editBtn = editBtn;
     }
 
     public Integer getId() {

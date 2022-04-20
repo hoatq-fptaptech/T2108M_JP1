@@ -23,6 +23,18 @@ public class StudentFormController {
     public TextField sBirthday;
     public TextArea sAddress;
 
+    public Student editData;
+
+    public void setEditData(Student editData){
+        this.editData = editData;
+
+        this.sName.setText(editData.getStudentName());
+        this.sEmail.setText(editData.getEmail());
+        this.sPhone.setText(editData.getPhoneNumber());
+        this.sBirthday.setText(editData.getDateOfBirth().toString());
+        this.sAddress.setText(editData.getAddress());
+    }
+
     public void backStudents() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("students.fxml"));
         Main.rootStage.setScene(new Scene(root,800,600));

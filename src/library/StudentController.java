@@ -37,6 +37,7 @@ public class StudentController implements Initializable {
         sAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         sEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         sPhone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        sAction.setCellValueFactory(new PropertyValueFactory<>("editBtn"));
 
         // get data from mysql
         try {
