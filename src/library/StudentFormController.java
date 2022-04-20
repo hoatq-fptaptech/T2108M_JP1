@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class StudentFormController {
     public final static String connectionString = "jdbc:mysql://localhost:3306/T2108M";
@@ -48,18 +45,27 @@ public class StudentFormController {
         String birthday = this.sBirthday.getText();
         String address = this.sAddress.getText();
 
-        String sql_txt = "insert into Students (studentName,dateOfBirth,address,email,phoneNumber) " +
-                " values('"+name+"','"+birthday+"','"+address+"','"+email+"','"+phone+"')";
-        System.out.println(sql_txt);
+
         try {
             // goi driver
             Class.forName("com.mysql.jdbc.Driver");
             // tao connect
             Connection conn = DriverManager.getConnection(connectionString,user,password);
-            // khai bao Statement de truy van sql
-            Statement stt = conn.createStatement();
-            // insert
-            stt.execute(sql_txt);
+
+            String sql_txt = "";
+            if(this.editData == null){
+                sql_txt = "insert into Students (studentName,dateOfBirth,address,email,phoneNumber) values(?,?,?,?,?)";
+            }else{
+                sql_txt = "update Students set studentName= ?,dateOfBirth = ?,address=?,email=?,phoneNumber= ? where id="+this.editData.getId();
+            }
+            PreparedStatement stt = conn.prepareStatement(sql_txt);
+            stt.setString(1,name);
+            stt.setString(2,birthday);
+            stt.setString(3,address);
+            stt.setString(4,email);
+            stt.setString(5,phone);
+            stt.execute();
+
             this.backStudents();
         }catch (Exception e){
             System.out.println(e.getMessage());
