@@ -1,5 +1,6 @@
 package library;
 
+import database.Connector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class StudentController implements Initializable {
 
             // truy van sql
             String txt_sql = "select * from Students";
-            Connector conn = new Connector();
+            Connector conn = Connector.getInstance();
             PreparedStatement stt = conn.getStatement(txt_sql);
             ResultSet rs = stt.executeQuery();
 

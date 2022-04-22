@@ -1,5 +1,6 @@
 package library;
 
+import database.Connector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,17 +42,14 @@ public class StudentFormController {
         String phone = this.sPhone.getText();
         String birthday = this.sBirthday.getText();
         String address = this.sAddress.getText();
-
-
         try {
-
             String sql_txt = "";
             if(this.editData == null){
                 sql_txt = "insert into Students (studentName,dateOfBirth,address,email,phoneNumber) values(?,?,?,?,?)";
             }else{
                 sql_txt = "update Students set studentName= ?,dateOfBirth = ?,address=?,email=?,phoneNumber= ? where id="+this.editData.getId();
             }
-            Connector conn = new Connector();
+            Connector conn = Connector.getInstance();
             PreparedStatement stt = conn.getStatement(sql_txt);
             stt.setString(1,name);
             stt.setString(2,birthday);
