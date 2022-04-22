@@ -1,8 +1,6 @@
 package library;
 
 import database.Connector;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.sql.*;
@@ -82,4 +80,5 @@ public class StudentRepository implements IStudentInterface {
 
         }
     }
+
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StudentController implements Initializable {
@@ -37,25 +38,11 @@ public class StudentController implements Initializable {
 
         // get data from mysql
         try {
-
-            // truy van sql
-            String txt_sql = "select * from Students";
-            Connector conn = Connector.getInstance();
-            PreparedStatement stt = conn.getStatement(txt_sql);
-            ResultSet rs = stt.executeQuery();
+            StudentRepository sr = new StudentRepository();
+            ArrayList<Student> as = sr.list();
 
             ObservableList<Student> list = FXCollections.observableArrayList();
-            while (rs.next()){
-                Student s = new Student(
-                            rs.getInt("id"),
-                            rs.getString("studentName"),
-                            Date.valueOf(rs.getString("dateOfBirth")),
-                            rs.getString("address"),
-                            rs.getString("email"),
-                            rs.getString("phoneNumber")
-                            );
-                list.add(s);
-            }
+            list.addAll(as);
             tbStudents.setItems(list);
         }catch (Exception e){
             System.out.println(e.getMessage());

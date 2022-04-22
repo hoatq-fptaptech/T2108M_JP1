@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.sql.*;
+import java.sql.Date;
 
 public class StudentFormController {
 
@@ -43,21 +43,13 @@ public class StudentFormController {
         String birthday = this.sBirthday.getText();
         String address = this.sAddress.getText();
         try {
-            String sql_txt = "";
-            if(this.editData == null){
-                sql_txt = "insert into Students (studentName,dateOfBirth,address,email,phoneNumber) values(?,?,?,?,?)";
+            StudentRepository sr = new StudentRepository();
+            if(this.editData == null) {
+                Student s = new Student(null,name,Date.valueOf(birthday),address,email,phone);
+                sr.create(s);
             }else{
-                sql_txt = "update Students set studentName= ?,dateOfBirth = ?,address=?,email=?,phoneNumber= ? where id="+this.editData.getId();
+                sr.update(this.editData);
             }
-            Connector conn = Connector.getInstance();
-            PreparedStatement stt = conn.getStatement(sql_txt);
-            stt.setString(1,name);
-            stt.setString(2,birthday);
-            stt.setString(3,address);
-            stt.setString(4,email);
-            stt.setString(5,phone);
-            stt.execute();
-
             this.backStudents();
         }catch (Exception e){
             System.out.println(e.getMessage());
