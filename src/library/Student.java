@@ -92,4 +92,9 @@ public class Student {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return this.getStudentName();
+    }
 }
