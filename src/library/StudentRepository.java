@@ -5,7 +5,7 @@ import database.Connector;
 import java.util.ArrayList;
 import java.sql.*;
 
-public class StudentRepository implements IStudentInterface {
+public class StudentRepository extends Repository{
     @Override
     public ArrayList<Student> list() {
         try {
@@ -79,6 +79,31 @@ public class StudentRepository implements IStudentInterface {
         }catch (Exception e){
 
         }
+    }
+
+    public Student findById(int id) {
+        try {
+            // truy van sql
+            String txt_sql = "select * from Students where id = ?";
+            Connector conn = Connector.getInstance();
+            PreparedStatement stt = conn.getStatement(txt_sql);
+            stt.setInt(1,id);
+            ResultSet rs = stt.executeQuery();
+            while (rs.next()) {
+                Student s = new Student(
+                        rs.getInt("id"),
+                        rs.getString("studentName"),
+                        Date.valueOf(rs.getString("dateOfBirth")),
+                        rs.getString("address"),
+                        rs.getString("email"),
+                        rs.getString("phoneNumber")
+                );
+                return s;
+            }
+        }catch (Exception e){
+
+        }
+        return null;
     }
 
 }
